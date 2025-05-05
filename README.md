@@ -17,6 +17,43 @@ MiLoDo addresses fundamental limitations in decentralized optimization by introd
 - **Versatile Problem Support**: Works with LASSO regression, logistic regression, and neural network training (MLP, ResNet)
 - **Scalable Architecture**: Effective across various network topologies and large-scale networks with up to 100 nodes
 
+## Results
+
+MiLoDo demonstrates exceptional optimization performance and strong generalization capabilities across various scenarios:
+
+<p align="center">
+
+  <img src="assets/r1.png" alt="Dimension Scaling" width="90%"/>
+
+</p>
+
+**Figure : Dimension Scaling** - MiLoDo optimizer trained on low-dimensional (300) LASSO problems efficiently solves high-dimensional (30000) problems, achieving 1.5-2× faster convergence than state-of-the-art methods.
+
+<p align="center">
+
+<img src="assets/r2.png" alt="MLP Training" width="90%"/>
+
+</p>
+
+**Figure : Neural Network Training (MLP/MNIST)** - When training 3-layer MLP networks, MiLoDo significantly accelerates both loss function convergence and test accuracy improvement, performing approximately 2× faster than traditional optimizers.
+
+<p align="center">
+
+<img src="assets/r3.png" alt="ResNet Training" width="90%"/>
+
+</p>
+
+**Figure : Deep Network Training (ResNet/CIFAR-10)** - MiLoDo exhibits outstanding performance in training complex ResNet architectures, reaching higher accuracy faster and demonstrating its adaptability to non-convex optimization problems.
+
+<p align="center">
+
+<img src="assets/r4.png" alt="Network Topology Scaling" width="90%"/>
+
+</p>
+
+**Figure : Network Topology Adaptability** - MiLoDo performs excellently across various network topologies (left: 10-node exponential graph, right: 50-node network), with 1.5× and 3× faster convergence respectively, proving its scalability in large distributed environments.
+
+These results validate the effectiveness of MiLoDo's mathematics-inspired design, substantially enhancing convergence speed while maintaining optimization accuracy. For complete experimental details, please refer to our [paper](https://arxiv.org/abs/2410.01700).
 
 ## Dependencies
 
