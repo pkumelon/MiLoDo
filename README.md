@@ -4,15 +4,19 @@
 
 # MiLoDo: A Mathematics-Inspired Learning-to-Optimize Framework for Decentralized Optimization
 
-MiLoDo is an innovative framework for decentralized optimization that leverages meta-learning techniques to enhance the performance and convergence speed of distributed optimization algorithms. The framework provides advanced solutions for various optimization problems, including L1 regularized problems and more complex neural network optimizations (MLP and ResNet).
+MiLoDo addresses fundamental limitations in decentralized optimization by introducing mathematical structures into learning-to-optimize approaches. Unlike traditional handcrafted algorithms with strong theoretical guarantees but sub-optimal practical performance, MiLoDo derives precise mathematical conditions that successful algorithms must satisfy, significantly narrowing the parameter search space while ensuring node consensus and strong generalization. This mathematics-guided approach enables MiLoDo-trained optimizers to consistently outperform state-of-the-art alternatives across diverse optimization tasks, from low to high dimensions and synthetic to real data. For complete technical details, see our [arXiv paper](https://arxiv.org/abs/2410.01700).
 
 ## Features
 
-- **Adaptive Meta-learning Optimizer**: Trained through meta-learning to outperform traditional decentralized optimization algorithms
-- **Multiple Optimization Problems**: Support for LASSO regression, L1 logistic regression, MLP neural networks, and ResNet
-- **Algorithm Comparisons**: Implementation of 7 decentralized optimization algorithms (MiLoDo, Prox-DGD, Prox-ED, Prox-ATC, PG-EXTRA, DAPG, ODAPG)
-- **Multi-stage Training**: Flexible multi-stage training process through configuration files
-- **Results Visualization**: Intuitive comparison of different algorithms' performance
+
+- **Mathematics-Inspired Structure**: Utilizes derived mathematical principles to constrain the learning process, ensuring both consensus and optimality
+- **Exceptional Generalization**: Optimizers trained on 100 iterations can robustly perform for 100,000+ iterations during inference
+- **Cross-Domain Adaptability**: Successfully transfers from synthetic to real data, low to high dimensions (300 to 30,000+), and across different loss functions
+- **Performance Guarantees**: Theoretically proven to converge to exact solutions with consensus across nodes
+- **Comprehensive Evaluation**: Outperforms many decentralized algorithms (Prox-DGD, Prox-ED, Prox-ATC, PG-EXTRA, DAPG, ODAPG) across various tasks
+- **Versatile Problem Support**: Works with LASSO regression, logistic regression, and neural network training (MLP, ResNet)
+- **Scalable Architecture**: Effective across various network topologies and large-scale networks with up to 100 nodes
+
 
 ## Dependencies
 
@@ -25,10 +29,7 @@ pip install -r requirements.txt
 ```
 MiLoDo/
 ├── algorithms/          # Distributed optimization algorithm implementations
-├── data/                # Dataset storage directory
-├── fig/                 # Result charts output directory
 ├── MiLoDo/              # Core MiLoDo framework
-├── model/               # Directory for saved models
 ├── optimizees/          # Optimization problem definitions
 ├── scripts/             # Training scripts and configurations
 ├── utils/               # Utility functions
@@ -47,17 +48,17 @@ Training parameters are defined in the `scripts/stages_config.json` file, contai
 ```json
 [
     {
-        "lr": 0.0005,              // Learning rate
-        "truncation_length": 5,    // Inner steps
-        "iterations": 10,          // Outer iteration count
-        "epochs": 20               // Training epochs per stage
+        "lr": 0.0005,              
+        "truncation_length": 5,   
+        "iterations": 10,        
+        "epochs": 20            
     },
-    // More stage configurations...
+  
 ]
 ```
 
 Parameter meanings for each stage:
-- `lr`: Meta-optimizer learning rate
+- `lr`: Adam optimizer learning rate
 - `truncation_length`: Truncated backpropagation length (inner steps)
 - `iterations`: Optimization iterations per batch (outer steps)
 - `epochs`: Number of training epochs for the current stage
@@ -75,7 +76,7 @@ Or directly use Python:
 
 ```bash
 python train.py --stages_config "./scripts/stages_config.json" \
-    --batch_size 2 \
+    --batch_size 128 \
     --agents 10 \
     --optimizee lasso \
     --features 300 \
@@ -94,7 +95,7 @@ python train.py --stages_config "./scripts/stages_config.json" \
 
 - `--optimizee`: Optimization problem type (`lasso`, `logistic`, `mlp`, `resnet`)
 - `--agents`: Number of agents (nodes) in the network
-- `--batch_size`: Batch size for meta-learning
+- `--batch_size`: Batch size for meta-training
 - `--features`: Feature dimension (LASSO/Logistic regression)
 - `--l1_weight`: L1 regularization weight
 - `--noise`: Data noise level
