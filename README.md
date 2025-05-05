@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="milodo.png" alt="MiLoDo Logo" width="60%" style="max-width: 300px;"/>
+  <img src="assets/milodo.png" alt="MiLoDo Logo" width="60%" style="max-width: 300px;"/>
 </p>
 
 # MiLoDo: A Mathematics-Inspired Learning-to-Optimize Framework for Decentralized Optimization
