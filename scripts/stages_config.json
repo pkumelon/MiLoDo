@@ -1,0 +1,32 @@
+[
+    {
+        "lr": 0.0005,
+        "truncation_length": 5,
+        "iterations": 10,
+        "epochs": 20
+    },
+    {
+        "lr": 0.0001,
+        "truncation_length": 10,
+        "iterations": 20,
+        "epochs": 10
+    },
+    {
+        "lr": 0.00005,
+        "truncation_length": 20,
+        "iterations": 40,
+        "epochs": 10
+    },
+    {
+        "lr": 0.00001,
+        "truncation_length": 40,
+        "iterations": 80,
+        "epochs": 10
+    },
+    {
+        "lr": 0.00001,
+        "truncation_length": 20,
+        "iterations": 100,
+        "epochs": 5
+    }
+]
